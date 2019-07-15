@@ -15,7 +15,7 @@ public class PopulationController {
     @GetMapping(value = "/size/{people}", produces = {"application/json"})
     public ResponseEntity<?> getCountriesWithPopulationGreaterThan(@PathVariable int people) {
         ArrayList<Country> rtnCountries = CountriesApplication.ourCountryList.findCountries(c -> c.getPopulation() > people);
-        rtnCountries.sort((o1, o2) -> o1.getName().compareToIgnoreCase(o2.getName()));
+        rtnCountries.sort((o1, o2) -> (int)(o1.getName().compareToIgnoreCase(o2.getName())));
         return new ResponseEntity<>(rtnCountries, HttpStatus.OK);
     }
 
