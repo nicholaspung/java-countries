@@ -19,17 +19,17 @@ public class PopulationController {
         return new ResponseEntity<>(rtnCountries, HttpStatus.OK);
     }
 
-//    @GetMapping(value = "/min", produces = {"application/json"})
-//    public ResponseEntity<?> getMinPopulation() {
-//        ArrayList<Country> rtnCountries = CountriesApplication.ourCountryList.findCountries(c -> c.getPopulation() > people);
-//        return new ResponseEntity<>();
-//    }
-//
-//    @GetMapping(value = "/max", produces = {"application/json"})
-//    public ResponseEntity<?> getMaxPopulation() {
-//        ArrayList<Country> rtnCountries = CountriesApplication.ourCountryList.findCountries(c -> c.getPopulation() > people);
-//        return new ResponseEntity<>();
-//    }
+    @GetMapping(value = "/min", produces = {"application/json"})
+    public ResponseEntity<?> getMinPopulation() {
+        CountriesApplication.ourCountryList.countryList.sort((o1, o2) -> o1.getPopulation() - o2.getPopulation());
+        return new ResponseEntity<>(CountriesApplication.ourCountryList.countryList.get(0), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/max", produces = {"application/json"})
+    public ResponseEntity<?> getMaxPopulation() {
+        CountriesApplication.ourCountryList.countryList.sort((o1, o2) -> o2.getPopulation() - o1.getPopulation());
+        return new ResponseEntity<>(CountriesApplication.ourCountryList.countryList.get(0), HttpStatus.OK);
+    }
 
     // Stretch goal
 //    @GetMapping(value = "/population/median", produces = {"application/json"})
