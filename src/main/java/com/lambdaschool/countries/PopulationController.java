@@ -32,8 +32,10 @@ public class PopulationController {
     }
 
     // Stretch goal
-//    @GetMapping(value = "/population/median", produces = {"application/json"})
-//    public ResponseEntity<?> getMedianPopulation() {
-//        return new ResponseEntity<>();
-//    }
+    @GetMapping(value = "/median", produces = {"application/json"}) // grabs larger of the 2 medians
+    public ResponseEntity<?> getMedianPopulation() {
+        CountriesApplication.ourCountryList.countryList.sort((o1, o2) -> (int)(o1.getPopulation() - o2.getPopulation()));
+        int median = CountriesApplication.ourCountryList.countryList.size() / 2;
+        return new ResponseEntity<>(CountriesApplication.ourCountryList.countryList.get(median), HttpStatus.OK);
+    }
 }

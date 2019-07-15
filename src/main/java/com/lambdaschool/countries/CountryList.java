@@ -6,8 +6,8 @@ public class CountryList {
     public ArrayList<Country> countryList = new ArrayList<>();
 
     public CountryList() {
-        countryList.add(new Country("China",1420062022,9388211,39));
-        countryList.add(new Country("India",1368737513,2973190,28));
+        countryList.add(new Country("China",1420062022,9388211,39)); // age/median = 33, 28
+        countryList.add(new Country("India",1368737513,2973190,28)); // population/median = U.S./Indonesia
         countryList.add(new Country("U.S.",329093110,9147420,38));
         countryList.add(new Country("Indonesia",269536482,1811570,29));
         countryList.add(new Country("Brazil",212392717,8358140,33));

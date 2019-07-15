@@ -32,8 +32,10 @@ public class AgeController {
     }
 
     // Stretch goal
-//    @GetMapping(value = "/age/median", produces = {"application/json"})
-//    public ResponseEntity<?> getMedianMedianAge() {
-//        return new ResponseEntity<>();
-//    }
+    @GetMapping(value = "/median", produces = {"application/json"}) // grabs larger of the 2 medians
+    public ResponseEntity<?> getMedianMedianAge() {
+        CountriesApplication.ourCountryList.countryList.sort((o1, o2) -> (int)(o1.getMedianAge() - o2.getMedianAge()));
+        int median = CountriesApplication.ourCountryList.countryList.size() / 2;
+        return new ResponseEntity<>(CountriesApplication.ourCountryList.countryList.get(median), HttpStatus.OK);
+    }
 }
